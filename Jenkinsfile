@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('creating apk') {
            steps {
-            echo "Creating apk",
+            sh 'echo "Creating apk"',
             sh './gradlew assembleRelease'
            }
         }
         stage('creating bundle') {
            steps {
-            echo "Creating bundle",
+            sh 'echo "Creating bundle"',
             sh './gradlew bundleRelease'
             }
         }

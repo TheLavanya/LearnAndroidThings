@@ -39,11 +39,7 @@
         </activity>
 
         <activity android:name=".image.CaptureImageActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <receiver
@@ -65,6 +61,47 @@
                 <action android:name="android.intent.action.SIM_STATE_CHANGED" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".packageaddedreceiver.PackageAddedReceiverTestActivity">
+
+        </activity>
+
+        <receiver android:name=".packageaddedreceiver.PackageAddedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_RESTARTED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".coroutine.CoroutineTestActivity">
+
+        </activity>
+        <activity android:name=".basic.BasicLearningActivity">
+
+        </activity>
+        <activity android:name=".basic.Test1Activity"></activity>
+
+        <activity android:name=".launchmodes.ActivityA">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".launchmodes.ActivityB"
+            android:launchMode="singleInstance">
+
+        </activity>
+        <activity android:name=".launchmodes.ActivityC"></activity>
+        <activity
+            android:name=".launchmodes.ActivityD"
+            android:launchMode="singleInstance">
+
+        </activity>
     </application>
 
 </manifest>

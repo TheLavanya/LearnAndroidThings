@@ -1,18 +1,38 @@
-pipeline {
-    agent any
+ pipeline {
+   agent any
 
-    stages {
-        stage('creating apk') {
+   stages {
+     stage('Making gradle wrapper executable') {
+       steps {
+         sh 'chmod 777 gradlew '
+       }
+     }
+     stage('creating apk') {
+       steps {
+         sh './gradlew assembleRelease'
+       }
+     }
+     stage('creating bundle') {
            steps {
-            sh 'echo "Creating apk"',
-            sh './gradlew assembleRelease'
+             sh './gradlew bundleRelease'
            }
-        }
-        stage('creating bundle') {
+      }
+     stage('Archiving APK') {
+       steps {
+         archiveArtifacts artifacts: '**/*.apk',
+         followSymlinks: false
+       }
+     }
+     stage('Archiving Bundle') {
            steps {
-            sh 'echo "Creating bundle"',
-            sh './gradlew bundleRelease'
-            }
-        }
-    }
-}
+             archiveArtifacts artifacts: '**/*.aab',
+             followSymlinks: false
+           }
+         }
+     stage('Publishing to Play store') {
+       steps {
+         echo 'Hello World 4'
+       }
+     }
+   }
+ }
